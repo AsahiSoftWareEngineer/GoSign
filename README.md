@@ -6,7 +6,7 @@ Open source electronic signature system
 ```git clone https://github.com/AsahiSoftWareEngineer/GoSign.git ```
 <br>
 
-## Enviroment
+## Environment
 + ServerSide -> Python3 & Django
 + Database   -> PostgreSQL
 + ClientSide -> Pure CSS& Pure html & Pure Javascript
