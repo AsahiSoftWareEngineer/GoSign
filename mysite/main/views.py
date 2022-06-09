@@ -7,7 +7,6 @@ from .backend import Database
 # Create your views here.
 
 class Check(generic.TemplateView):
-    
     def post(self, request, *args, **kwargs):
         token = self.kwargs["agreement_id"]
         mail_address:str = request.POST['email']
@@ -24,7 +23,7 @@ class Check(generic.TemplateView):
         id = self.kwargs["agreement_id"]
         data = Database("preview").get_data([id])
         return_data = {
-            "file":data["file_name"],
+            "file": data["file_name"],
         }
         return render(request, 'check.html', return_data)
 
