@@ -1,13 +1,23 @@
 {% extends "admin/base_site.html" %}
+{% load static %}
 {% block content %}
-<form action="#" id="create_form" method="post" enctype="multipart/form-data">
+<link rel="stylesheet" href="{% static '/css/create.css'%}">
+
+    <form action="#" id="create_form" method="post" enctype="multipart/form-data">
     {% csrf_token %}
-    <p>件名 <input type="text" name="agreement_name" ></p>
-    <p>契約先会社名 <input type="text" name="client_name" ></p>
-    <p>契約元会社名<input type="text" name="host_name"></p>
-    <p>担当者名<input type="text" name="host_user_name"></p>
-    <p>契約 <input type="file" name="pdf_file" id="pdf_file"></p>
-    <a onclick="javascript:create_form.submit()">作成</a>
+    <div class="create-form">
+        <div class="form-group">
+         <p>件名 <input type="text" name="agreement_name" ></p>
+         <p>契約先会社名 <input type="text" name="client_name" ></p>
+         <p>契約元会社名<input type="text" name="host_name"></p>
+         <p>担当者名<input type="text" name="host_user_name"></p>
+         <p>契約書<input type="file" name="pdf_file" id="pdf_file"></p> 
+         </div>
+         <button class="create-button" onclick="javascript:create_form.submit()">作成</button>
+    </div>
+        
 </form>
    
+
+
 {% endblock %}

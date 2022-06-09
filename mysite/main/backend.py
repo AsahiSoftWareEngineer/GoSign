@@ -1,4 +1,4 @@
-from .models import Base
+from .models import List
 import secrets
 import datetime
 class Database:
@@ -7,7 +7,7 @@ class Database:
     def insert(self, data):
         if(self.table_name == "base"):
             agreement_id = str(secrets.token_hex())
-            db = Base(
+            db = List(
                 agreement_id=agreement_id, 
                 agreement_name=data["agreement_name"], 
                 client_name=data["client_name"],
@@ -23,7 +23,7 @@ class Database:
         
     def get_data(self, data):
         if (self.table_name == "base"):
-            data = Base.objects.all()
+            data = List.objects.all()
             name_list = []
             id_list = []
             for i in data:
@@ -32,7 +32,7 @@ class Database:
             return zip(id_list, name_list)
             pass
         elif(self.table_name == "preview"):
-            data = Base.objects.filter(agreement_id=data[0])
+            data = List.objects.filter(agreement_id=data[0])
             data_dict = {}
             for i in data:
                 data_dict["agreement_id"] = i.agreement_id
@@ -49,28 +49,28 @@ class Database:
     
     def delete_data(self, data):
         if (self.table_name == "base"):
-            data = Base.objects.filter(agreement_id=data[0])
+            data = List.objects.filter(agreement_id=data[0])
             data.delete()
         pass
     
     def migrate_data(self, data):
         t_delta = datetime.timedelta(hours=9)
         if (self.table_name == "mail"):
-            db = Base.objects.get(agreement_id=data[0])
+            db = List.objects.get(agreement_id=data[0])
             db.mail_address = data[1]
             db.save()
         elif(self.table_name == "date"):
             date = datetime.datetime.now(datetime.timezone(t_delta, 'JST')).strftime("%Y/%m/%d-%H:%M:%s")
-            db = Base.objects.get(agreement_id=data[0])
+            db = List.objects.get(agreement_id=data[0])
             db.client_agreement_date = date
             db.save()
         elif(self.table_name == "client_user_name"):
-            db = Base.objects.get(agreement_id=data[0])
+            db = List.objects.get(agreement_id=data[0])
             db.client_user_name = data[1]
             db.save()
         elif(self.table_name == "host_certificate_date"):
             date = datetime.datetime.now(datetime.timezone(t_delta, 'JST')).strftime("%Y/%m/%d-%H:%M:%S")
-            db = Base.objects.get(agreement_id=data[0])
+            db = List.objects.get(agreement_id=data[0])
             db.host_agreement_date = date
             db.save()
                 

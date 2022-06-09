@@ -1,6 +1,6 @@
 from django.db import models
 
-class Base(models.Model):
+class List(models.Model):
     agreement_id = models.TextField()
     agreement_name = models.TextField()
     client_name = models.TextField()
@@ -12,4 +12,5 @@ class Base(models.Model):
     host_agreement_date = models.TextField()
     file_name = models.FileField(upload_to='pdf/')
     
+
     

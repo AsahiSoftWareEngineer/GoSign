@@ -7,7 +7,7 @@
     <title>署名ページ</title>
 </head>
 <body>
-    <iframe src="/media/{{file}}" frameborder="0"></iframe>
+    <a href="/media/{{file}}">ファイルを開く</a>
     <form action="#" method="post" id="enter_form">
         {% csrf_token %}
         <p>署名 <input type="text" name="client_user_name" id="client_user_name"> </p>

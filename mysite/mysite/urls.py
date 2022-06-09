@@ -18,6 +18,9 @@ from django.urls import path, include
 from . import settings
 from django.conf.urls.static import static
 
+admin.site.site_title = "Go-Sign"
+admin.site.site_header = "Go-Sign Administration"
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("main/", include("main.urls"))
