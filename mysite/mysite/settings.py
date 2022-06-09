@@ -13,10 +13,33 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 from pathlib import Path
 import os
 import environ
-
-
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
+import json
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+#-------------JSON SETTINGS --------------------------------
+
+default_Email = ""
+email_host = ""
+email_port = 0
+email_user = ""
+email_password = ""
+jsonFilePath = os.path.join(BASE_DIR, "mysite/Setting/setting.json")
+with open(jsonFilePath, "r", encoding="utf8") as f:
+    jsonData = json.load(f)
+    mailSetting = jsonData["mail"]
+    default_Email = mailSetting["default-email"]
+    email_host = mailSetting["host"]
+    email_port = mailSetting["port"]
+    email_user = mailSetting["user"]
+    email_password = mailSetting["password"]
+    
+    
+    
+    
+
+#--------------------------
+# Build paths inside the project like this: BASE_DIR / 'subdir'.
+
 env = environ.Env()
 env.read_env(os.path.join(BASE_DIR,'.env'))
 
@@ -121,12 +144,12 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
 
 
+DEFAULT_FROM_EMAIL = default_Email
+EMAIL_HOST = email_host
+EMAIL_PORT = email_port
+EMAIL_HOST_USER = email_user
+EMAIL_HOST_PASSWORD = email_password
 
-DEFAULT_FROM_EMAIL = env("DEFAULT_FROM_EMAIL")
-EMAIL_HOST = env("EMAIL_HOST")
-EMAIL_PORT =env("EMAIL_PORT")
-EMAIL_HOST_USER = env("EMAIL_HOST_USER")
-EMAIL_HOST_PASSWORD = env("EMAIL_HOST_PASSWORD")
 EMAIL_USE_TLS = True
 
 # Static files (CSS, JavaScript, Images)

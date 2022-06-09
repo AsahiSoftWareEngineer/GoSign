@@ -1,0 +1,9 @@
+{
+    "mail": {
+        "default-email": "test@example.com",
+        "host": "smtp.example.com",
+        "port": "000",
+        "user": "test@example.com",
+        "password": "xxx"
+    }
+}
