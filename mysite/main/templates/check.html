@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <iframe src="/media/{{file}}" frameborder="0"></iframe>」
+    <form action="#" method="post" id="move_confirm">
+        {% csrf_token %}
+        <p>メールアドレス<input type="text" name="email" id="email"></p>
+        <a onclick="javascript:move_confirm.submit()"> 確認メールを送信する</a>
+    </form>
+   
+</body>
+</html>

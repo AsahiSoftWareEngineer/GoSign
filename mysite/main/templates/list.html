@@ -1,0 +1,25 @@
+{% extends "admin/base_site.html" %}
+{% block content %}
+<table>
+    {% for i,j in agreement_list %}
+    <tr>
+        <td>{{j}}</td>
+        <td><a href="/main/manage/agreement/{{i}}">プレビュー</a></td>
+        <td><a onclick="deleteRow('{{i}}')">削除</a>　</td>
+    </tr>
+    {% endfor %}
+</table>
+<a href="/main/manage/create/">作成</a>
+　<form action="#" method="post" id="function_form">
+    {% csrf_token %}
+    <input type="hidden" name="type" value="delete">
+    <input type="hidden" name="id" id="id" value="">
+</form>
+<script type="text/javascript">
+    function deleteRow(id){
+        let form = document.getElementById("function_form");
+        document.getElementById("id").value = id;
+        form.submit();
+    }
+</script>
+{% endblock %}

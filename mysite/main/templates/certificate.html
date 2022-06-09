@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>署名ページ</title>
+</head>
+<body>
+    <iframe src="/media/{{file}}" frameborder="0"></iframe>
+    <form action="#" method="post" id="enter_form">
+        {% csrf_token %}
+        <p>署名 <input type="text" name="client_user_name" id="client_user_name"> </p>
+        <a onclick="javascript:enter_form.submit()">同意する</a>
+    </form>
+   
+</body>
+</html>
